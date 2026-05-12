@@ -7,7 +7,7 @@ import service2 from "./service2.jpeg";
 import service3 from "./service3.webp";
 import service4 from "./service4.jpeg";
 
-import projectMain from "./project-main.png";
+import projectMain from "./project-Main.png";
 import project1 from "./project1.webp";
 import project2 from "./project2.png";
 import project3 from "./project3.jpeg";

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section id="home" className="w-full px-4 md:px-10 py-4">
+    <section id="home" className="page-hero-offset w-full px-4 md:px-10 pb-4">
       {/* Animation Container */}
       <motion.div
         initial={{ scaleY: 0, opacity: 0 }}

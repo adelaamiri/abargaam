@@ -1,5 +1,5 @@
-import ContactHero from "../components/contact/ContactHero";
-import ContactForm from "../components/contact/ContactForm";
+import ContactHero from "../components/Contact/ContactHero";
+import ContactForm from "../components/Contact/ContactForm";
 
 const Contact = () => {
   return (

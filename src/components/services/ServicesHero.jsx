@@ -4,7 +4,7 @@ const ServicesHero = () => {
   const { title, breadcrumb, image } = servicesHeroData;
 
   return (
-    <section className="pt-28 px-4 md:px-8 lg:px-10">
+    <section className="page-hero-offset px-4 md:px-8 lg:px-10">
       <div className="relative rounded-2xl overflow-hidden shadow-xl">
         <img
           src={image}

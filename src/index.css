@@ -11,6 +11,17 @@ body {
   font-family: "Inter", "Poppins", sans-serif;
 }
 
+/* Keeps every page hero clear of the fixed navbar. */
+.page-hero-offset {
+  padding-top: 9rem;
+}
+
+@media (min-width: 768px) {
+  .page-hero-offset {
+    padding-top: 10rem;
+  }
+}
+
 /* 🔔 Phone ring wave (ONLY border moves) */
 @keyframes ringWave {
   0% {

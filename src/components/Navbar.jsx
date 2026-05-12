@@ -59,14 +59,17 @@
 
 // export default Navbar;
 
-import { FaPhoneAlt } from "react-icons/fa";
+import { useState } from "react";
+import { FaBars, FaPhoneAlt, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { navLinks, siteInfo } from "../data/siteData";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-10 pt-4">
-      <div className="max-w-[1500px] mx-auto bg-[#098b98]/95 backdrop-blur-md rounded-md shadow-md px-6 md:px-12 py-3 flex items-center justify-between">
+      <div className="relative max-w-[1500px] mx-auto bg-[#098b98]/95 backdrop-blur-md rounded-md shadow-md px-6 md:px-12 py-3 flex items-center justify-between">
         {/* Logo */}
         <NavLink to="/">
           <img
@@ -115,7 +118,38 @@ const Navbar = () => {
           </div>
         </div>
 
-        <button className="lg:hidden text-white text-3xl">☰</button>
+        {/* Mobile menu toggle keeps page navigation available on small screens. */}
+        <button
+          type="button"
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((current) => !current)}
+          className="lg:hidden w-11 h-11 rounded-md text-white text-2xl flex items-center justify-center hover:bg-white/10 transition"
+        >
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        {isMenuOpen && (
+          <div className="absolute left-0 right-0 top-[calc(100%+0.75rem)] lg:hidden bg-[#098b98] rounded-md shadow-xl px-5 py-4">
+            <ul className="flex flex-col gap-2 text-white text-[17px]">
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <NavLink
+                    to={link.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `block rounded-md px-4 py-3 transition hover:bg-white/10 ${
+                        isActive ? "text-yellow-300" : "text-white"
+                      }`
+                    }
+                  >
+                    {link.title}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </nav>
   );

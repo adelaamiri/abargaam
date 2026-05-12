@@ -4,7 +4,7 @@ const AboutHero = () => {
   const { title, breadcrumb, image } = aboutHeroData;
 
   return (
-    <section className="pt-28 px-4 md:px-8 lg:px-10">
+    <section className="page-hero-offset px-4 md:px-8 lg:px-10">
       <div className="max-w-[1600px] mx-auto">
         <div className="relative rounded-2xl overflow-hidden shadow-lg">
           {/* IMAGE */}

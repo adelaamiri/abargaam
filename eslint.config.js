@@ -26,7 +26,8 @@ export default defineConfig([
       "no-unused-vars": [
         "warn",
         {
-          varsIgnorePattern: "^[A-Z_]",
+          // Framer Motion's JSX namespace is lowercase, but it is still used in tags like <motion.div>.
+          varsIgnorePattern: "^[A-Z_]|^motion$",
           argsIgnorePattern: "^_",
         },
       ],

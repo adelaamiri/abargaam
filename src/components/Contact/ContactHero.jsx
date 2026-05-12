@@ -2,7 +2,7 @@ import { contactHeroData } from "../../data/contactPageData";
 
 const ContactHero = () => {
   return (
-    <section className="w-full px-4 md:px-10 py-8 mt-20 md:mt-24">
+    <section className="page-hero-offset w-full px-4 md:px-10 pb-8">
       <div className="max-w-[1500px] mx-auto">
         <div className="relative w-full h-[520px] md:h-[720px] lg:h-[950px] rounded-md overflow-hidden">
           {/* Image */}

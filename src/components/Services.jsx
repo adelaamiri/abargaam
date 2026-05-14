@@ -2,17 +2,30 @@ import { motion } from "framer-motion";
 import { servicesData } from "../data/siteData";
 
 const Services = () => {
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
   const cardVariants = {
-    hidden: (index) => ({
-      x: index === 0 ? 520 : index === 1 ? 170 : index === 2 ? -170 : -520,
-      scale: 0.96,
-      opacity: 0.9,
-    }),
+    hidden: {
+      y: 34,
+      scale: 0.98,
+      opacity: 0,
+    },
 
     visible: {
-      x: 0,
+      y: 0,
       scale: 1,
       opacity: 1,
+      transition: {
+        duration: 0.55,
+        ease: [0.22, 1, 0.36, 1],
+      },
     },
   };
 
@@ -42,22 +55,19 @@ const Services = () => {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
-          {servicesData.map((service, index) => (
+        {/* Staggered cards avoid the empty horizontal gap from off-screen animations. */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8 items-stretch"
+        >
+          {servicesData.map((service) => (
             <motion.div
               key={service.id}
-              custom={index}
               variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              animate="hidden"
-              transition={{
-                duration: 1.4,
-                delay: index * 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              viewport={{ once: false, amount: 0.45 }}
-              className="bg-white rounded-md shadow-md px-7 pt-7 pb-8 flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-500"
+              className="h-full bg-white rounded-md shadow-md px-7 pt-7 pb-8 flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300"
             >
               <div className="w-full h-[180px] md:h-[190px] rounded-md overflow-hidden mb-7">
                 <img
@@ -76,7 +86,7 @@ const Services = () => {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Button */}
         <motion.div
